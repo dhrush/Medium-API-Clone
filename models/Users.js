@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    /*username:{
+    username:{
         type: String,
         required: true,
         unique: true
@@ -10,15 +10,15 @@ const userSchema = new Schema({
     email: String,
     password:{
         type: String,
-        //required: true,        
+        required: true,        
     },
     image: String,
-    token: String*/
-    username: String,
+    token: String
+    /*username: String,
     email:String,
     password:String,
     image:String,
-    token:String
+    token:String*/
 })
 
 const User = mongoose.model('UserCollection', userSchema);
