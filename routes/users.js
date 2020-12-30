@@ -7,13 +7,14 @@ router.post('/', async(req, res)=>{
     try{
         const reqUsername = req.body.username;
         const reqEmail = req.body.email;
-        const user = await usersController.createUser(reqUsername, reqEmail);
-        res.send(user);
+        const reqPassword = req.body.password;        
+        const user = await usersController.createUser(reqUsername, reqEmail, reqPassword);
+        res.status(201).json(user);                
     }
     catch(err){
         console.log(err);
         return res.status(422).json({
-            errors: {body: ['Could not create user']}
+            errors: {body: ['Could not create user', err.mess]}
         })
     }
 });
