@@ -5,9 +5,9 @@ const usersController = require('../controllers/users');
 //POST /users/          CREATE A NEW USER
 router.post('/', async(req, res)=>{
     try{
-        const reqUsername = req.body.username;
-        const reqEmail = req.body.email;
-        const reqPassword = req.body.password;        
+        const reqUsername = req.body.users.username;
+        const reqEmail = req.body.users.email;
+        const reqPassword = req.body.users.password;        
         const user = await usersController.createUser(reqUsername, reqEmail, reqPassword);
         res.status(201).json(user);                
     }
