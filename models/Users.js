@@ -14,11 +14,6 @@ const userSchema = new Schema({
     },
     image: String,
     token: String
-    /*username: String,
-    email:String,
-    password:String,
-    image:String,
-    token:String*/
 })
 
 const User = mongoose.model('UserCollection', userSchema);

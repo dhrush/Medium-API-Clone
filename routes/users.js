@@ -1,15 +1,15 @@
 const router = require('express').Router();
 const usersController = require('../controllers/users');
-//import {createUser} from '../controllers/users';
 
 //POST /users/          CREATE A NEW USER
 router.post('/', async(req, res)=>{
     try{
-        const reqUsername = req.body.users.username;
-        const reqEmail = req.body.users.email;
-        const reqPassword = req.body.users.password;        
-        const user = await usersController.createUser(reqUsername, reqEmail, reqPassword);
-        res.status(201).json(user);                
+        /*const reqUsername = req.body.user.username;
+        const reqEmail = req.body.user.email;
+        const reqPassword = req.body.user.password;*/        
+        const newUser = await usersController.createUser(req.body.user);
+        console.log('new user from route is: '+newUser);
+        if(newUser) res.status(201).json(newUser);                
     }
     catch(err){
         console.log(err);
