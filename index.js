@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 const mongoose = require('mongoose');
 const usersRoute = require('./routes/users');
+const userRoute = require('./routes/user');
 
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 app.use('/api/users', usersRoute);
-//app.use('/api/user')
+app.use('/api/user', userRoute)
 
 //initialise the mongodb
 mongoose.connect(keys.mongo_db.dbURI, ()=>{console.log('mongo db running')});

@@ -1,11 +1,26 @@
-const router = requrie('express').Router();
+const router = require('express').Router();
+const userControllers = require('../controllers/users');
+const authByToken = require('../middleware/authorisation');
 
-//POST users/login     login a user
-router.post('/', (req, res)=>{
+//GET    /user     login a user
+router.get('/', authByToken, async(req, res)=>{ 
+    const user = await userControllers.getUserByEmail(req.body.user.email);
+    if(!user)
+    {
+        res.status(404).json({
+            errors:{body:['No such user']}
+        });
+    }
+    else
+    {
+        return res.status(200).json({user});
+    }
 
 });
 
-//POST users/           register a new user
-router.post('/', (req, res)=>{
+//PATCH users/           update data of currrent user
+router.patch('/', async(req, res)=>{
 
 });
+
+module.exports = router;

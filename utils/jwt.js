@@ -35,8 +35,4 @@ async function decode(token)
     })
 }
 
-
-async function runToken()
-{
-    const token = await sign({username: ''})
-}
+module.exports = {sign, decode};
