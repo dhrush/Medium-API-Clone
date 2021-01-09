@@ -4,7 +4,7 @@ const authByToken = require('../middleware/authorisation');
 
 //GET    /user     login a user
 router.get('/', authByToken, async(req, res)=>{ 
-    const user = await userControllers.getUserByEmail(req.body.user.email);
+    const user = await userControllers.getUserByEmail(req.user.email);
     if(!user)
     {
         res.status(404).json({

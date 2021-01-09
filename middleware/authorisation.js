@@ -8,7 +8,7 @@ const jwtFunc = require('../utils/jwt');
 async function authByToken(req, res, next)
 {
     //check if authorisation header exists
-    const authHeader = req.Header('Authorization').split(' ');
+    const authHeader = req.get('Authorization').split(' ');
     if(!authHeader)
     {
         return res.status(401).json({
@@ -17,7 +17,7 @@ async function authByToken(req, res, next)
     }
 
     //check if authorisation type is token
-    if(authHeader!='Token') return res.status(401).json({
+    if(authHeader[0]!='Token') return res.status(401).json({
         errors:{body:['Authorisation failed', 'Token missing']}
     })
 
