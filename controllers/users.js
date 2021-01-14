@@ -74,4 +74,30 @@ async function getUserByEmail(emailId)
     return userbyEmailId;
 }
 
-module.exports = {createUser, loginUser, getUserByEmail};
+//user can update username, bio, image, password
+async function updateUser(emailId, userDetails)
+{
+    let updatedUser = await User.findOne({email: emailId});
+
+    if(!updatedUser)
+    {
+        throw new Error('No user with this email exist');
+        return;
+    }
+
+    if(userDetails.bio) updatedUser.bio = userDetails.bio;
+    if(userDetails.username) updatedUser.username = userDetails.username;
+    if(userDetails.image) updatedUser.image = userDetails.image;
+    if(userDetails.password) updatedUser.password = await hasher.hashPassword(userDetails.password);
+
+    //update the user using mongoose function
+    updatedUser.save()
+        .then((user)=>{console.log(user)})
+        .catch(err=>console.log(err));
+    
+    console.log('new user updated @ controller is : '+updatedUser);
+    
+    return updatedUser;
+}
+
+module.exports = {createUser, loginUser, getUserByEmail, updateUser};

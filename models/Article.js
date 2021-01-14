@@ -1,11 +1,26 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const User = requrie('./Users');
+const User = require('./Users');
 
 const articleSchema = new Schema({
-    title: String,
-    description: String,
-    body: String,
+    slug: {
+        type: String
+    },
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    body: {
+        type: String,
+        required: true
+    },
+    tagList: {
+        type: [String]
+    },
     createdAt: {
         type: Date,
         default: new Date(),
@@ -14,7 +29,10 @@ const articleSchema = new Schema({
         type: Date,
         default: new Date(),
     },
-    author: User,
+    author: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    }
 })
 
 const Article = mongoose.model('ArticleCollection', articleSchema);

@@ -19,8 +19,12 @@ router.get('/', authByToken, async(req, res)=>{
 });
 
 //PATCH users/           update data of currrent user
-router.patch('/', async(req, res)=>{
-
+router.patch('/', authByToken, async(req, res)=>{
+    const user = await userControllers.updateUser(req.user.email, req.user);
+    if(user)
+    {
+        return res.status(200).json({user});
+    }
 });
 
 module.exports = router;
