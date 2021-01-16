@@ -30,8 +30,8 @@ const articleSchema = new Schema({
         default: new Date(),
     },
     author: {
-        type: Schema.ObjectId,
-        ref: 'User'
+        type: String,
+        required: true,
     }
 })
 

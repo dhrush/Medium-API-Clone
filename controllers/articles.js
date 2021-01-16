@@ -19,7 +19,7 @@ async function createArticle(data, email)
             description: data.description,
             body: data.body,
             taglist: data.taglist,
-            author: user, 
+            author: email, 
         });
 
         newArticle.save()
