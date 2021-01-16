@@ -2,7 +2,7 @@
 
 ## Trying to clone the backend API of medium.com
 
-- Technologies Used
+### Technologies Used
 
 1.  Node.js
 2.  Express
