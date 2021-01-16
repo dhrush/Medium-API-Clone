@@ -9,3 +9,4 @@
 3.  JavaScript
 4.  Mongoose
 5.  Mongodb
+6.  Postman for dev/testing API end points
