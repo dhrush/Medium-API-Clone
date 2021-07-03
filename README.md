@@ -1,6 +1,6 @@
 # Medium-API-Clone
 
-## TClone of backend API of medium.com
+## Clone of backend API of medium.com
 
 ### Technologies Used
 
